@@ -35,10 +35,12 @@ namespace nagarro_dotNet_mar19
                 #endregion
 
                 #region MergeSort
-                int[] msArr = { 5, 50, 1, 3, 87 };
-                MergeSort(msArr, 0, msArr.Length - 1);
-                PrintArr(msArr, msArr.Length);
+                //int[] msArr = { 5, 50, 1, 3, 87 };
+                //MergeSort(msArr, 0, msArr.Length - 1);
+                //PrintArr(msArr, msArr.Length);
                 #endregion
+
+                ChessMove.main();
 
                 Console.ReadLine();
             }
