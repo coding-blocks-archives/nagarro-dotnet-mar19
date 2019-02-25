@@ -29,9 +29,15 @@ namespace nagarro_dotNet_mar19
                 #endregion
 
                 #region BinarySearch
-                int[] bsArr = { 1, 2, 4, 7, 9 };
-                int idx = BinarySearch(bsArr, 0, 4, 3);
-                Console.WriteLine(idx);
+                //int[] bsArr = { 1, 2, 4, 7, 9 };
+                //int idx = BinarySearch(bsArr, 0, 4, 3);
+                //Console.WriteLine(idx);
+                #endregion
+
+                #region MergeSort
+                int[] msArr = { 5, 50, 1, 3, 87 };
+                MergeSort(msArr, 0, msArr.Length - 1);
+                PrintArr(msArr, msArr.Length);
                 #endregion
 
                 Console.ReadLine();
@@ -98,6 +104,60 @@ namespace nagarro_dotNet_mar19
                     return mid;
                 }
             }
+
+            public static void MergeSort(int[] arr, int beIdx, int endIdx)
+            {
+                if (endIdx <= beIdx) return;
+
+                int mid = (beIdx + endIdx) / 2;
+                MergeSort(arr, beIdx, mid);     // left sort...[be,mid]
+                MergeSort(arr, mid + 1, endIdx);    // right sort...(mid + 1, end]
+                MergeSortedArrays(arr, beIdx, endIdx, mid);
+            }
+
+            public static void MergeSortedArrays(int[] arr, int beIdx, int endIdx, int mid)
+            {
+                int nelements = (endIdx - beIdx + 1);
+                int[] tmp = new int[nelements];
+
+                int idx = 0;
+                int leftIdx = beIdx;
+                int rightIdx = mid + 1;
+
+                while (leftIdx <= mid && rightIdx <= endIdx)
+                {
+                    if (arr[leftIdx] < arr[rightIdx])
+                    {
+                        tmp[idx] = arr[leftIdx];
+                        idx++; leftIdx++;
+                    }
+                    else
+                    {
+                        tmp[idx++] = arr[rightIdx++];
+                    }
+                }
+                
+                // copy remaining elements from left
+                while (leftIdx <= mid)
+                {
+                    tmp[idx++] = arr[leftIdx++];
+                }
+
+                // copy remaining elements from right
+                while (rightIdx <= endIdx)
+                {
+                    tmp[idx++] = arr[rightIdx++];
+                }
+
+                // copy the tmp arr to original arr
+                idx = 0;
+                while(beIdx <= endIdx)
+                {
+                    arr[beIdx++] = tmp[idx++];
+                }
+            }
+
+
         }
     }
 }
