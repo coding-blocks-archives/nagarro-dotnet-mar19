@@ -6,7 +6,8 @@ namespace nagarro_dotNet_mar19
     {
         static void Main(string[] args)
         {
-            recursion.Program.main();
+            //recursion.Program.main();
+            datastructures.Program.main();
         }
     }
 }
