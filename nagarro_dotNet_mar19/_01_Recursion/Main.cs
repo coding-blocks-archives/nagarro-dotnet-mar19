@@ -62,25 +62,9 @@ namespace nagarro_dotNet_mar19
                 BubbleSort(arr, nextIdx, endIdx);
                 if (arr[beginIdx] > arr[nextIdx])
                 {
-                    Swap(ref arr[beginIdx], ref arr[nextIdx]);
+                    utils.Utils.Swap(ref arr[beginIdx], ref arr[nextIdx]);
                     BubbleSort(arr, nextIdx, endIdx);
                 }
-            }
-
-            public static void Swap(ref int element1, ref int element2)
-            {
-                int tmp = element1;
-                element1 = element2;
-                element2 = tmp;
-            }
-
-            public static void PrintArr(int[] arr, int elementsToPrint)
-            {
-                for (int i = 0; i < elementsToPrint; ++i)
-                {
-                    Console.Write($"{arr[i]} ");
-                }
-
             }
 
             public static int BinarySearch(int[] arr, int elementToSearch)

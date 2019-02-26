@@ -10,7 +10,8 @@ namespace nagarro_dotNet_mar19
         {
             public static void main()
             {
-                LinkedListFunctionalities.main();
+                //LinkedListFunctionalities.main();
+                StkQue.main();
             }
         }
     }

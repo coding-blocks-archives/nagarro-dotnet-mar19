@@ -8,8 +8,21 @@ namespace nagarro_dotNet_mar19.datastructures
     {
         public static void main()
         {
-            Node head = createLL();
-            printLL(head);
+            //Node head = createLL();
+            //printLL(head);
+
+            //head = reverseLLIter(head);
+            //printLL(head);
+
+            #region add Numbers
+            Node num1 = createLL();
+            Node num2 = createLL();
+            Node result = add2LL(num1, num2);
+            printLL(num1);
+            printLL(num2);
+            printLL(result);
+            #endregion
+
             Console.ReadLine();
         }
 
@@ -81,27 +94,95 @@ namespace nagarro_dotNet_mar19.datastructures
 
         public static Node reverseLL(Node head)
         {
+            if (head == null) return head;
+            if (head.next == null) return head;
 
+            Node smallRevHead = reverseLL(head.next);
+            head.next.next = head;
+            head.next = null;
+            return smallRevHead;
+        }
+
+        public static Node reverseLLIter(Node head)
+        {
+            Node prev = null;
+            Node cur = head;
+            while (cur != null)
+            {
+                Node next = cur.next;
+                cur.next = prev;
+                prev = cur;
+
+                cur = next;
+            }
+            return prev;
         }
 
         public static Node add2LL(Node number1, Node number2)
         {
 
+            var rNumber1 = reverseLL(number1);
+            var rNumber2 = reverseLL(number2);
+
+            Node ansHead = null;
+            Node ansTail = null;
+
+            Node cur1 = rNumber1;
+            Node cur2 = rNumber2; ;
+
+            int carry = 0;
+            while(cur1 != null || cur2 != null)
+            {
+                int sum = carry;
+                sum += cur1 != null ? cur1.data : 0;
+                sum += cur2 != null ? cur2.data : 0;
+
+                int digit = sum % 10;
+                carry = sum /  10;
+
+                Node newNode = new Node(digit);
+                if (ansHead == null)
+                {
+                    ansHead = ansTail = newNode;
+                }
+                else
+                {
+                    ansTail.next = newNode;
+                    ansTail = ansTail.next;
+                }
+
+                if (cur1 != null) cur1 = cur1.next;
+                if (cur2 != null) cur2 = cur2.next;
+            }
+            
+            if (carry != 0)
+            {
+                Node newNode = new Node(carry);
+                ansTail.next = newNode;
+            }
+
+            reverseLL(rNumber1);
+            reverseLL(rNumber2);
+            return reverseLL(ansHead);
         }
 
         public static Node mergeSort(Node head)
         {
-        
+            return null;
         }
 
         public static Node middleNode(Node head)
         {
+            return null;
 
         }
 
         public static Node mergeSortedList(Node list1, Node list2)
-        { }
-        
+        {
+            return null;
+
+        }
+
 
     }
 }
