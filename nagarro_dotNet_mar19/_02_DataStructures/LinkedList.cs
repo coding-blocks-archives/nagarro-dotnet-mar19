@@ -10,6 +10,7 @@ namespace nagarro_dotNet_mar19.datastructures
         {
             Node head = createLL();
             printLL(head);
+            Console.ReadLine();
         }
 
         public class Node
@@ -59,13 +60,48 @@ namespace nagarro_dotNet_mar19.datastructures
 
         public static Node getTail(Node head)
         {
-            // TODO
-            return null;
+            Node cur = head;
+            while(cur != null && cur.next != null)
+            {
+                cur = cur.next;
+            }
+            return cur;
         }
 
         public static void printLL(Node head)
         {
-            // TODO 
+            Node cur = head;
+            while (cur != null)
+            {
+                Console.Write($"{cur.data}-->");
+                cur = cur.next;
+            }
+            Console.WriteLine();
         }
+
+        public static Node reverseLL(Node head)
+        {
+
+        }
+
+        public static Node add2LL(Node number1, Node number2)
+        {
+
+        }
+
+        public static Node mergeSort(Node head)
+        {
+        
+        }
+
+        public static Node middleNode(Node head)
+        {
+
+        }
+
+        public static Node mergeSortedList(Node list1, Node list2)
+        { }
+        
+
     }
 }
