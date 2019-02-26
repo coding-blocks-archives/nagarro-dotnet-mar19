@@ -8,6 +8,8 @@ namespace nagarro_dotNet_mar19
         {
             //recursion.Program.main();
             datastructures.Program.main();
+
+            Console.ReadLine();
         }
     }
 }

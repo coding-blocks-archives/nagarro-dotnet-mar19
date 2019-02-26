@@ -24,11 +24,20 @@ namespace utils
 
         public static int[] InpArr(int nelements)
         {
-            return null;
+            int[] arr = new int[nelements];
+            for (int i = 0; i < nelements; ++i)
+            {
+                arr[i] = int.Parse(Console.ReadLine());
+            }
+            return arr;
         }
 
         public static void PrintList(LinkedList<int> list)
         {
+            foreach(int x in list)
+            {
+                Console.Write($"{x}, ");
+            }
 
         }
     }
