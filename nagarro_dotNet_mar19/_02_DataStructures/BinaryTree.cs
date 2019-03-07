@@ -29,7 +29,7 @@ namespace nagarro_dotNet_mar19
             {
                 TreeNode root = createTree();
                 //PrintTree(root);
-                ConnectLevels(root);
+                ConnectLevels2(root);
                 PrintTreeLevelWise(root);
             }
 
@@ -110,11 +110,12 @@ namespace nagarro_dotNet_mar19
 
             public static void ConnectLevels2(TreeNode root)
             {
-                while (root != null)
-                {
-                    TreeNode cur = root;
+                TreeNode cur = root;
+                while (cur != null)
+                  {
+                    TreeNode nextlevel = null;
                     TreeNode child = null;
-                    while (cur != null)
+                    while (cur != null) // start of my level
                     {
                         if (cur.left != null)
                         {
@@ -125,8 +126,8 @@ namespace nagarro_dotNet_mar19
                             }
                             else
                             {
-                                root = cur.left;
-                                child = root;
+                                nextlevel = cur.left;
+                                child = cur.left;
                             }
                         }
 
@@ -139,13 +140,15 @@ namespace nagarro_dotNet_mar19
                             }
                             else
                             {
-                                root = cur.left;
+                                nextlevel = cur.right;
                                 child = root;
                             }
                         }
                         cur = cur.next;
                     }
+                    cur = nextlevel;
                 }
+            }
 
         }
     }

@@ -12,7 +12,8 @@ namespace nagarro_dotNet_mar19
             {
                 //LinkedListFunctionalities.main();
                 //StkQue.main();
-                BinaryTreeFunctionalities.main();
+                //BinaryTreeFunctionalities.main();
+                Heap.main();
             }
         }
     }
