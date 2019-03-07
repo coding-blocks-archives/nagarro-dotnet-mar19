@@ -11,6 +11,7 @@ namespace nagarro_dotNet_mar19
             public int data;
             public TreeNode left;
             public TreeNode right;
+            public TreeNode next;
 
             public TreeNode()
             {
@@ -28,6 +29,7 @@ namespace nagarro_dotNet_mar19
             {
                 TreeNode root = createTree();
                 //PrintTree(root);
+                ConnectLevels(root);
                 PrintTreeLevelWise(root);
             }
 
@@ -75,11 +77,75 @@ namespace nagarro_dotNet_mar19
                         continue;
                     }
 
-                    Console.Write($"{cur.data}, ");
+                    Console.Write($"{cur.data}({(cur.next != null?cur.next.data : 0 )}),");
                     if (cur.left != null)  q.Enqueue(cur.left);
                     if (cur.right != null) q.Enqueue(cur.right);
                 }
             }
+
+            public static void ConnectLevels(TreeNode root)
+            {
+                Queue<TreeNode> curLevelQ = new Queue<TreeNode>();
+                TreeNode END_OF_LEVEL = null;
+
+                curLevelQ.Enqueue(root);
+                curLevelQ.Enqueue(END_OF_LEVEL);
+
+                while(curLevelQ.Count != 0)
+                {
+                    TreeNode curNode = curLevelQ.Dequeue();
+                    if (curNode == END_OF_LEVEL)
+                    {
+                        if (curLevelQ.Count != 0)
+                        {
+                            curLevelQ.Enqueue(END_OF_LEVEL);
+                        }
+                        continue;
+                    }
+                    curNode.next = curLevelQ.Peek();
+                    if (curNode.left != null) curLevelQ.Enqueue(curNode.left);
+                    if (curNode.right != null) curLevelQ.Enqueue(curNode.right);
+                }
+            }
+
+            public static void ConnectLevels2(TreeNode root)
+            {
+                while (root != null)
+                {
+                    TreeNode cur = root;
+                    TreeNode child = null;
+                    while (cur != null)
+                    {
+                        if (cur.left != null)
+                        {
+                            if (child != null)
+                            {
+                                child.next = cur.left;
+                                child = child.next;
+                            }
+                            else
+                            {
+                                root = cur.left;
+                                child = root;
+                            }
+                        }
+
+                        if (cur.right != null)
+                        {
+                            if (child != null)
+                            {
+                                child.next = cur.right;
+                                child = child.next;
+                            }
+                            else
+                            {
+                                root = cur.left;
+                                child = root;
+                            }
+                        }
+                        cur = cur.next;
+                    }
+                }
 
         }
     }
