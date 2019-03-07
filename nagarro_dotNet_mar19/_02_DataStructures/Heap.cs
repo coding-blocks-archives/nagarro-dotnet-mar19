@@ -22,7 +22,6 @@ namespace nagarro_dotNet_mar19
                 get { return count_; }
             }
 
-
             public PriorityQueue()
             {
                 heap_ = new List<int>();
@@ -35,7 +34,7 @@ namespace nagarro_dotNet_mar19
                 heap_.Add(element);
                 count_++;
                 int elementIdx = count_;
-                while (parent(elementIdx) > TOPIDX && heap_[elementIdx] > heap_[parent(elementIdx)])
+                while (parent(elementIdx) >= TOPIDX && heap_[elementIdx] > heap_[parent(elementIdx)])
                 {
                     //Utils.Swap(ref heap_[parent(elementIdx)], ref heap_[elementIdx]);
                     int tmp = heap_[parent(elementIdx)];
@@ -86,11 +85,11 @@ namespace nagarro_dotNet_mar19
                 {
                     return heap_[TOPIDX];
                 }
-                catch (IndexOutOfRangeException e)
+                catch (ArgumentOutOfRangeException e)
                 {
                     Console.WriteLine(e.Message);
-                    return -1;
-                    //throw;
+                    //return -1;
+                    throw;
                 }
             }
         }
@@ -101,13 +100,13 @@ namespace nagarro_dotNet_mar19
             {
                 PriorityQueue pq = new PriorityQueue();
                 // perform operations
-                pq.insert(1);
-                pq.insert(2);
-                pq.insert(-2);
-                Console.Write(pq.Remove());
-                Console.Write(pq.Remove());
+                //pq.insert(1);
+                //pq.insert(2);
+                //pq.insert(-2);
+                Console.WriteLine(pq.Top());
+                //Console.WriteLine(pq.Remove());
                 pq.insert(40);
-                Console.Write(pq.Remove());
+                //Console.WriteLine(pq.Remove());
             }
 
         }
