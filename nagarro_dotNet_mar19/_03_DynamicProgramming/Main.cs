@@ -10,7 +10,8 @@ namespace nagarro_dotNet_mar19
         {
             public static void main()
             {
-                dynamicprogramming.Questions.main();
+                //dynamicprogramming.Questions.main();
+                dynamicprogramming.knapsack.main();
             }
         }
     }
