@@ -82,6 +82,24 @@ namespace nagarro_dotNet_mar19
 
             }
 
+            public static int longesetCommonSubstr(string wordA, string wordB)
+            {
+                int[,] lcsAtB = new int[wordA.Length + 1, wordB.Length + 1];
+                int maxLcs = 0;
+
+                for(int row = 1; row <= wordA.Length; ++row)
+                {
+                    for(int col = 1; col <= wordB.Length; ++col)
+                    {
+                        if (wordA[row - 1] == wordB[col - 1])
+                        {
+                            lcsAtB[row, col] = 1 + lcsAtB[row - 1, col - 1];
+                            maxLcs = Math.Max(maxLcs, lcsAtB[row, col]);
+                        }
+                    }
+                }
+                return maxLcs;
+            }
 
 
             public static void main()
@@ -101,10 +119,16 @@ namespace nagarro_dotNet_mar19
                 //}
                 //int ans = nJumpsRec(potential, 0);
 
-                int[] potential = { 3, 6, 7, 1, 6, 3, 5, 8, 3 };
-                int ans = nJumpsDP(potential);
-                Console.WriteLine($"{ans}");
+                //int[] potential = { 3, 6, 7, 1, 6, 3, 5, 8, 3 };
+                //int ans = nJumpsDP(potential);
+                //Console.WriteLine($"{ans}");
 
+                //string wordA = "abfdef";
+                //string wordB = "bfcdef";
+                string wordA = "zxabczycde";
+                string wordB = "abc";
+                int ans = longesetCommonSubstr(wordA, wordB);
+                Console.WriteLine($"{ans}");
             }
         }
     }
