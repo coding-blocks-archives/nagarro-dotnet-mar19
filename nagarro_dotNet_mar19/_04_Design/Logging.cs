@@ -34,7 +34,7 @@ namespace nagarro_dotNet_mar19
                             string level,
                             string file, int line)
             {
-                Console.WriteLine($"{DateTime.Now}-{level}-{file}:{line}-{message}");
+                Console.WriteLine($"{DateTime.Now}-{level}-{System.IO.Path.GetFileName(file)}:{line}-{message}");
             }
         }
 

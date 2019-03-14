@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace nagarro_dotNet_mar19
@@ -16,6 +17,11 @@ namespace nagarro_dotNet_mar19
                 this.inpFile = _inpFile;
                 this.outFile = _outFile;
 
+                if (File.Exists(_outFile))
+                {
+                    File.Delete(_outFile);
+                }
+
             }
 
             public String[] ReadFile(string filepath)
@@ -25,7 +31,7 @@ namespace nagarro_dotNet_mar19
 
             public void WriteFile(string filepath, List<String> lines)
             {
-                System.IO.File.WriteAllLines(filepath, lines);
+                System.IO.File.AppendAllLines(filepath, lines);
             }
 
             public void Parse()
@@ -35,7 +41,7 @@ namespace nagarro_dotNet_mar19
 
                 foreach(string line in inpLines)
                 {
-                    Logging.Debug($"Reading {this.inpFile}, {line}");
+                    Logging.Debug($"Reading line:{line}");
                     string[] lineVal = line.Split(',');
                     string[] reqVal = new string[2];
 
@@ -57,7 +63,7 @@ namespace nagarro_dotNet_mar19
                     outLines.Add($"{reqVal[0]},{reqVal[1]}");
                 }
 
-                Logging.Info($"Writing File to {this.outFile}");
+                Logging.Info($"Writing File to {Path.Combine(Directory.GetCurrentDirectory(), outFile)}");
                 this.WriteFile(outFile, outLines);
             }
 
