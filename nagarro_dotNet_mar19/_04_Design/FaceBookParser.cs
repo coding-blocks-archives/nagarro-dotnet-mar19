@@ -13,16 +13,18 @@ namespace nagarro_dotNet_mar19
             {
             }
 
+            override
             public string GetName(string[] row)
             {
                 int nameIdx = 0;
                 return row[nameIdx].Trim();
             }
 
+            override
             public DateTime GetDate(string[] row)
             {
                 int dateIdx = 1;
-                DateTime dateStr = DateTime.Parse(row[dateIdx]); // todo ParseExact
+                DateTime dateStr = DateTime.ParseExact(row[dateIdx], "dd-MMM-yyyy", null); // todo ParseExact
                 return dateStr;
             }
         }

@@ -35,6 +35,7 @@ namespace nagarro_dotNet_mar19
 
                 foreach(string line in inpLines)
                 {
+                    Logging.Debug($"Reading {this.inpFile}, {line}");
                     string[] lineVal = line.Split(',');
                     string[] reqVal = new string[2];
 
@@ -43,10 +44,20 @@ namespace nagarro_dotNet_mar19
 
                     reqVal[nameIdx] = this.GetName(lineVal);
 
-                    var bdate = this.GetDate(lineVal);
-                    reqVal[monthIdx] = bdate.Month.ToString() + "M";
+                    try
+                    {
+                        var bdate = this.GetDate(lineVal);
+                        reqVal[monthIdx] = bdate.Month.ToString() + "M";
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"Cannot convert date, line:{line}");
+                        continue;
+                    }
+                    outLines.Add($"{reqVal[0]},{reqVal[1]}");
                 }
 
+                Logging.Info($"Writing File to {this.outFile}");
                 this.WriteFile(outFile, outLines);
             }
 
