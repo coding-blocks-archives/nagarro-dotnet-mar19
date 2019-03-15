@@ -8,9 +8,9 @@ namespace nagarro_dotNet_mar19
         {
             //recursion.Program.main();
             //datastructures.Program.main();
-            //dynamicprogramming.Program.main();
+            dynamicprogramming.Program.main();
             //design.Main.main();
-            Questions.Miscellaneous.main();
+            //Questions.Miscellaneous.main();
             Console.ReadLine();
         }
     }
