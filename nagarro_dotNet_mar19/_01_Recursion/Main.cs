@@ -40,9 +40,9 @@ namespace nagarro_dotNet_mar19
                 //PrintArr(msArr, msArr.Length);
                 #endregion
 
-                ChessMove.main();
+                //ChessMove.main();
+                ChessCount.main();
 
-                Console.ReadLine();
             }
 
             public static int Factorial(int n)

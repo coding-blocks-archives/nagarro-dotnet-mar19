@@ -38,7 +38,11 @@ namespace utils
             {
                 Console.Write($"{x}, ");
             }
+        }
 
+        public static int readInt()
+        {
+            return int.Parse(Console.ReadLine());
         }
     }
 }
