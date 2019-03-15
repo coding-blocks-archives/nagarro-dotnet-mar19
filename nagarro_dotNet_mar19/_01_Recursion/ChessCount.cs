@@ -93,7 +93,7 @@ namespace nagarro_dotNet_mar19.recursion
             }
 
             // if diagonal behave as Bishop
-            if (startRow == startCol)
+            //if (startRow == startCol)
             {
                 for (int step = 1; step < board.GetLength(0); ++step)
                 {
@@ -122,11 +122,11 @@ namespace nagarro_dotNet_mar19.recursion
             bool alternate = false;
             for (int i = 2; i <= n*n; ++i)
             {
-                if (isPrime(i))
-                {
-                    board[i, j] = alternate ? -1 : -2;
-                    alternate = !alternate;
-                }
+                //if (isPrime(i))
+                //{
+                //    board[i, j] = alternate ? -1 : -2;
+                //    alternate = !alternate;
+                //}
 
             }
 
